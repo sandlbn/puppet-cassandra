@@ -233,7 +233,7 @@ fi
 # Prefer binding to IPv4 network intefaces (when net.ipv6.bindv6only=1). See 
 # http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6342561 (short version:
 # comment out this entry to enable IPv6 support).
-CATALINA_OPTS="$JVM_OPTS -Djava.net.preferIPv4Stack=true"
+JVM_OPTS="$JVM_OPTS -Djava.net.preferIPv4Stack=true"
 
 # jmx: metrics and administration interface
 # 
@@ -248,7 +248,7 @@ JVM_OPTS="$JVM_OPTS -Dcom.sun.management.jmxremote.port=$JMX_PORT"
 JVM_OPTS="$JVM_OPTS -Dcom.sun.management.jmxremote.ssl=false" 
 JVM_OPTS="$JVM_OPTS -Dcom.sun.management.jmxremote.authenticate=false" 
 JVM_OPTS="$JVM_OPTS $JVM_EXTRA_OPTS"
-
+CATALINA_OPTS="$JVM_OPTS"
 <% @additional_jvm_opts.each do |jvm_opt| %>
 JVM_OPTS="$JVM_OPTS <%= jvm_opt %>"
 <% end %>
